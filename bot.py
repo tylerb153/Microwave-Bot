@@ -23,7 +23,10 @@ async def on_voice_state_update(member, before, after):
             await client.change_presence(status=discord.Status.online)
             await after.channel.connect(timeout=30, reconnect=True)
             botVC = after.channel.guild.voice_client
-            discord.opus.load_opus('/opt/homebrew/Cellar/opus/1.5.1/lib/libopus.0.dylib')
+            if os.platform == 'macOS':
+                discord.opus.load_opus('/opt/homebrew/Cellar/opus/1.5.1/lib/libopus.0.dylib')
+            else:
+                discord.opus.load_opus('libopus.so.0')
             def playMicrowaveSound(error):
                 if error:
                     print(f'Error in playMicrowaveSound: {error}')
