@@ -2,7 +2,7 @@ import discord
 from discord import FFmpegPCMAudio
 import dotenv
 import os
-
+import platform
 
 dotenv.load_dotenv()
 TOKEN = os.getenv('DISCORD_BOT_TOKEN')
@@ -23,10 +23,11 @@ async def on_voice_state_update(member, before, after):
             await client.change_presence(status=discord.Status.online)
             await after.channel.connect(timeout=30, reconnect=True)
             botVC = after.channel.guild.voice_client
-            if os.platform == 'macOS':
+            if platform.system() == 'Darwin':
                 discord.opus.load_opus('/opt/homebrew/Cellar/opus/1.5.1/lib/libopus.0.dylib')
-            else:
+            elif platform.system() == 'Linux':
                 discord.opus.load_opus('libopus.so.0')
+                
             def playMicrowaveSound(error):
                 if error:
                     print(f'Error in playMicrowaveSound: {error}')
