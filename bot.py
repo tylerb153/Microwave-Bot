@@ -56,7 +56,7 @@ async def on_voice_state_update(member, before, after):
 ## Run Discord Client ##
 @client.event
 async def on_ready():
-    await client.change_presence(status=discord.Status.invisible)
+    await client.change_presence(status=discord.Status.invisible, activity=discord.Activity(type=discord.ActivityType.custom, name="Microwave", state='MMMMMMMMMMMMMMMMMMM'))
     print("Ready")
 
 client.run(TOKEN)
