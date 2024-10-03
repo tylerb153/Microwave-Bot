@@ -20,7 +20,7 @@ async def on_voice_state_update(member, before, after):
     try:
         if after.channel != None and after.channel.name == microwaveChannelName:
             # print(f'{member.display_name} has joined {after.channel.name}')
-            await client.change_presence(status=discord.Status.online)
+            await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.custom, name="Microwave", state='MMMMMMMMMMMMMMMMMMM'))
             await after.channel.connect(timeout=30, reconnect=True)
             botVC = after.channel.guild.voice_client
             if platform.system() == 'Darwin':
@@ -56,7 +56,7 @@ async def on_voice_state_update(member, before, after):
 ## Run Discord Client ##
 @client.event
 async def on_ready():
-    await client.change_presence(status=discord.Status.invisible, activity=discord.Activity(type=discord.ActivityType.custom, name="Microwave", state='MMMMMMMMMMMMMMMMMMM'))
+    await client.change_presence(status=discord.Status.invisible)
     print("Ready")
 
 client.run(TOKEN)
