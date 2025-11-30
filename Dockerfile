@@ -1,10 +1,8 @@
 # syntax=docker/dockerfile:1
 
-FROM ubuntu:24.04
+FROM python:3.13.8-slim
 
 RUN apt-get update
-RUN apt-get install -y python3-pip
-RUN apt-get install -y python3-venv
 RUN apt-get install -y libopus0 ffmpeg
 
 
