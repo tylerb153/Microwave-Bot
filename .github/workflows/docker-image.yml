@@ -20,7 +20,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ vars.DOCKER_USERNAME }}/tymler
+          images: ${{ vars.DOCKER_USERNAME }}/microwave
           tags: |
             latest
       
